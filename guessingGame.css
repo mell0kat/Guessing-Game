@@ -1,1 +1,75 @@
+/* * * * * * * * * *
+GENERAL
+* * * * * * * * * */
 
+/* * * * * * * * * *
+COLORS
+* * * * * * * * * */
+
+h1{
+  color:darkblue;
+  position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+h1{
+  border: 6px double #949599;
+   height: 100px;
+    margin: 20px;
+    padding: 20px;
+    width: 400px;
+  display:inline;
+  background: yellow;
+  
+  font-size:24px;
+}
+
+#buttons{ 
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 5%;
+  background:red;
+}
+
+header{
+  text-align:center;
+}
+
+html{
+	
+ border: 2px solid #467813;
+  border-radius: 5px;
+  background: linear-gradient(#000080, #00ff00);
+
+}
+
+section{
+  text-align: center;
+  margin:0;
+	background: white;
+}
+
+
+p {
+  color:blue; 
+  font-size:16px;}
+
+/* colored button if clicked*/
+button.clicked{
+  background:darkgray;
+}
+button{
+  background: gray;
+}
+
+footer p{
+	color:white;
+	background:black;
+
+
+}
+footer {
+	
+	background: black;
+}
