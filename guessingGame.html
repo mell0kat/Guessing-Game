@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-<!-- this is a comment, use them-->
-
-
   <head>
     	<meta charset="utf-8">
     	<title>My Guessing Game | My first website ever!)</title>
@@ -13,42 +9,50 @@
   </head>
   		
   <body>
-  		<header>
-    		<h1 id="guess"> Can You Guess the Number?</h1>
-    			
-    	</header>
-    	<section>
-        <div id="userInputSection">
-    		  <label> Try it here
-    				  <input type="text" id="user guess" placeholder="Enter a number 1-100" required>
-    			 </label>
-    			<button name="submit">
+
+  	<header>
+    	<h1> Can You Guess the Number?</h1>
+    </header>
+
+    <section id="section1">
+
+      <div id="userInputSection">
+    		<label> Try it here
+    			<input type="text" id="user guess" placeholder="Enter a number 1-100" required>
+    		</label>
+    		<button name="submit">
   				Submit your guess!
-				</button>
+			  </button>
       </div>
+
       <div id="buttons">
         <button class="clicked">
           Play again
         </button>
         <button >
           Hint
-        </button>
-			   
-    		  
-      </div id="remainingGuesses">
-    		<p>Guesses remaining</p>
-    	</section>
-      <section>
-        <img src="Assets/thermometer.png" alt="Thermometer picture">
+        </button>	  
+      </div >
+
+      <div id="remainingGuesses">
+    	 <p id="theseManyRemaining">You have such and such guesses remaining</p>
+      </div>
+
+    </section>
+
+    <section id="thermom">
+        <img  src="Assets/thermometer.png" alt="Thermometer picture" height="250" >
         <p>&#8592;</p>
-      </section>
+    </section>
     	
-    	<footer>
-    		<a href="https://www.linkedin.com/in/katherinemello"><img src="Assets/linkedinimage.jpeg" alt="Linkedin Logo"></a> 
-    		<a href="https://github.com/mell0kat"><img src="Assets/logoGitHub.png" alt="GitHub Logo"></a>  
-    		<a href="https://www.tumblr.com/search/mellowcatcollections"><img src="Assets/tumblrLogo.png" alt="tumblr Logo"></a>  
-    		<p>&copy; 2015 Katherine Mello.</p>
-    	</footer>
+    <footer>
+      
+    		<a class="image"  href="https://www.linkedin.com/in/katherinemello"><img src="Assets/linkedinimage.jpeg" alt="Linkedin Logo" height="50" ></a> 
+      
+    		<a class="image" href="https://github.com/mell0kat"><img  src="Assets/logoGitHub.png" alt="GitHub Logo" height="50" ></a>  
+    		<a class="image" href="https://www.tumblr.com/search/mellowcatcollections"><img class="image" src="Assets/tumblrLogo.png" alt="tumblr Logo" height="50" ></a>  
+    		<p>&copy; 2015 Katherine Mello</p>
+    </footer>
 
 
     		

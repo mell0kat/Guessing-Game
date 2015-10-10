@@ -6,24 +6,35 @@ GENERAL
 COLORS
 * * * * * * * * * */
 
-h1{
-  color:darkblue;
-  position: fixed;
-    bottom: 0;
-    right: 0;
+
+
+header{
+  
+  background: white;
+  border: 2px solid #467813;
+  border-radius: 5px;
+  border: 3px solid #8AC007;
+
+
 }
 
 h1{
-  border: 6px double #949599;
-   height: 100px;
-    margin: 20px;
-    padding: 20px;
-    width: 400px;
-  display:inline;
-  background: yellow;
-  
+  text-align:center;
   font-size:24px;
+
 }
+h1{
+  color:darkblue;
+  position: fixed;
+    bottom: 25;
+    right: 25;
+}
+
+#linkedin{
+  height:10px;
+  width: 25px;
+}
+
 
 #buttons{ 
   max-width: 940px;
@@ -32,17 +43,9 @@ h1{
   background:red;
 }
 
-header{
-  text-align:center;
-}
 
-html{
-	
- border: 2px solid #467813;
-  border-radius: 5px;
-  background: linear-gradient(#000080, #00ff00);
 
-}
+
 
 section{
   text-align: center;
@@ -59,17 +62,39 @@ p {
 button.clicked{
   background:darkgray;
 }
+
 button{
   background: gray;
 }
 
-footer p{
-	color:white;
-	background:black;
-
+section.section1{
+  background=lightblue
+}
+body p {
+  font-size:24px;
+  color:white;
 
 }
+
+#remainingGuesses{
+  width:450px;
+  height:50px;
+  font-size:24px;
+  background:red;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 50px;
+  margin-right: 10px;
+
+}
+
+footer p{
+  text-align:center;
+	color:white;
+}
+
 footer {
-	
 	background: black;
+  height:150px;
+
 }
