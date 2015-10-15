@@ -1,100 +1,120 @@
-/* * * * * * * * * *
-HEADING
-* * * * * * * * * */
 
-header{
-  
-  background: black;
-  border: 3px solid blue;
-
-}
-
-h1{
-  color:white;
-  text-align:center;
-  font-size:24px;
-  bottom: 25;
-  right: 25;
-
-}
-
-/* * * * * * * * * *
+/* * * * * * * * * 
 GENERAL
-* * * * * * * * * */
+* * * * * * * * */
 
-section{
-  text-align: center;
-  margin:0;
-  background: white;
+body{
+	background-color:lightgreen;
 }
 
-/* * * * * * * * * *
-USER INPUT FIELD
-* * * * * * * * * */
+/* * * * * * * * * 
+TITLE
+* * * * * * * * */
 
-/* colored button if clicked*/
-#clicked{
-  background:darkgray;
+#title{
+	font-size:5em;
+	color:#ff00ff;
+	font-family:cursive, serif;
+	text-align:center;
+	text-shadow: 2px 2px blue;
+	margin-top:0.3em;
+	margin-bottom:0.3em;
+
 }
 
-body p {
-  font-size:24px;
-  color:white;
+/* * * * * * * * * 
+USER INPUT BOX
+* * * * * * * * */
+
+#user_input_box{
+	background-color: black;
+	border:0.3em solid lightgreen;
+	border-radius:25px;
+	height: 10em;
+	width:15em;
+	margin:auto;
+	margin-top:100px;
+
 }
 
-#userInputSection{
-  margin-top:150px;
+
+#try{
+	font-size: 1.35em;
+	color:white;
+	margin-top: 12px;
+	margin-left:75px;
+	font-family:Garamond;
 }
+
+#user_guess{
+	margin-left:55px;
+	margin-top:12px;
+}
+
+/* * * * * * * * * 
+SUBMIT & HINT & NEW GAME BUTTONS
+* * * * * * * * */
+
 
 button{
-  background: gray;
+    height:50px;
+    width:120px;
+    border:0.3em solid blue;
+    border-radius:25px;
+    background-color: #ff00ff;
+    text-align:center;
+    color:blue;
+    display: inline-block;
+    margin-top:20px;
+    padding-top: .5em;
 }
 
-#buttons{ 
-  
-  margin: 0 auto;
-  padding: 10px;
-  margin-top:200px;
-  background:white;
 
+
+#left_button{
+	float:left;
+	margin-left:30%;
 }
 
-/* * * * * * * * * *
-REMAINING GUESSES SECTION
-* * * * * * * * * */
-
-#remainingGuesses{
-  width:450px;
-  height:50px;
-  font-size:24px;
-  background:red;
-  margin:50px;
-  margin-bottom: 150px;
-  /*margin-bottom: 50px;*/
-  margin-left: 350px;
-  /*margin-right: 10px;*/
+#right_button{
+	float:right;
+	margin-right:30%;
 }
-/* * * * * * * * * *
+
+#remaining_guesses{
+	font-size:2em;
+	color:blue;
+	font-family:cursive, serif;
+	text-align:center;
+	text-shadow: 1px 1px #ff00ff;
+	margin-top:0.3em;
+	margin-bottom:0.3em;
+}
+/* * * * * * * * * 
 FOOTER
-* * * * * * * * * */
-
-#pictureSection{
-  margin-left:470px;
-  padding:10px;
-
-}
+* * * * * * * * */
 
 footer p{
   text-align:center;
-	color:white;
+color:white;
   font-size:12px;
+  text-align:center;
+  margin-top:5em;
 }
-#myName{
-  margin-right:470px;
+
+footer div{
+	border: .25em solid #ff00ff;
+	width:50px;
+	display: inline-block;
+	margin-top:15px;
+} 
+
+#first_pic{
+	margin-left:42%;
 }
 
 footer {
 	background: black;
-  height:150px;
-
+    height:150px;
+    margin-top:220px;
 }

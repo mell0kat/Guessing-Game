@@ -1,62 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    	<meta charset="utf-8">
-    	<title>My Guessing Game | My first website ever!)</title>
-    	<link rel="stylesheet" href="normalize.css">
-      <link rel="stylesheet" href="guessingGame.css">
-  </head>
-  		
-  <body>
 
-  	<header>
-    	<h1> Can You Guess the Number?</h1>
-    </header>
+<head>
+   <meta charset="utf-8">
+   <title>My Guessing Game | My first website ever!)</title>
 
-    <section id="section1">
+   <link type="text/css" rel="stylesheet" href="normalize.css">
+   <link type="text/css" rel="stylesheet" href="guessingGame2.css">
+  
+</head>
 
-      <div id="userInputSection">
-    		<label> Try it here
-    			<input type="text" id="user guess" placeholder="Enter a number 1-100" required>
-    		</label>
-    		<button name="submit">
-  				Submit your guess!
-			  </button>
-      </div>
 
-      <div id="buttons">
-        <button id="clicked">
-          Play again
-        </button>
-        <button >
-          Hint
-        </button>	  
-      </div >
-
-      <div id="remainingGuesses">
-    	 <p id="theseManyRemaining">You have such and such guesses remaining</p>
-      </div>
-
-    </section>
-
-    <section id="thermom">
-        <img  src="Assets/thermometer.png" alt="Thermometer picture" height="250" >
-        <p>&#8592;</p>
-    </section>
+<body>
+	<p id="title">Can you guess my number?</p>
+	
+	<div id="user_input_box"> 
+		<p id="try">Try it here</p>
+		<div id="user_guess" >
+    		<input id='guess_value'type="text" placeholder="Enter a number 1-100" required>
+    		<button id="guess_button" type="submit" value="Submit">Submit</button>
+    	</div>
     	
-    <footer>
-      <div id="pictureSection">
+    	
+    </div>
+	
+	<div class="button" id="left_button">
+		<button type="button">I need a <em>hint</em>, please!</button>
+	</div>
+
+	<div class="button" id="right_button" >
+		<button type="button">I require a <strong>new</strong> game, please!</button>
+	</div>
+
+  <p id="remaining_guesses">You have <span id="remaining">4 </span>guesses remaining.</p>
+
+	<footer>
+      	<div id="first_pic">
     		<a class="image"  href="https://www.linkedin.com/in/katherinemello"><img src="Assets/linkedinimage.jpeg" alt="Linkedin Logo" height="50" ></a> 
+    	</div>
+    	<div>
       
     		<a class="image" href="https://github.com/mell0kat"><img  src="Assets/logoGitHub.png" alt="GitHub Logo" height="50" ></a>  
+    	</div>
+    	<div>
     		<a class="image" href="https://www.tumblr.com/search/mellowcatcollections"><img class="image" src="Assets/tumblrLogo.png" alt="tumblr Logo" height="50" ></a>  
-    		<p id="myName">&copy; 2015 Katherine Mello</p>
-      </div>
+    	</div>
+    	<p>&copy; 2015 Katherine Mello</p>
+      
     </footer>
-
-
-    		
-  </body>
-		
+<script src="jquery-1.11.3.js"></script>
+<script src="guessingGame.js"></script>
+	
+</body>
 </html>
+
+<!--I'm a comment!-->
