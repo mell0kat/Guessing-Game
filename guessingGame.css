@@ -3,6 +3,10 @@
 GENERAL
 * * * * * * * * */
 
+.center_me{
+	margin-left:50%;
+}
+
 body{
 	background-color:lightgreen;
 }
@@ -69,6 +73,16 @@ button{
     padding-top: .5em;
 }
 
+h3{
+	text-align:center;
+	margin-top: 12px;
+	margin-bottom: 12px;
+	font-size: 1.25em;
+	
+	color:lightgreen;
+
+}
+
 
 
 #left_button{
@@ -87,8 +101,9 @@ button{
 	font-family:cursive, serif;
 	text-align:center;
 	text-shadow: 1px 1px #ff00ff;
-	margin-top:0.3em;
+	margin-top:3.5em;
 	margin-bottom:0.3em;
+	clear:both;
 }
 /* * * * * * * * * 
 FOOTER

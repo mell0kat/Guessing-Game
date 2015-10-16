@@ -12,18 +12,22 @@ var userNum;
 var guesses = 4;
 
 //Keep track of user guesses
-guessArray=[]
+var guessArray=[ ];
+
+//Initiate "advice" string
+var advice="You are "
 
 
 //Write a function to check for valid input
 function checkInput(num){
 
 //Have to do a double check because for some reason typeof(NaN)==='number'
-	
-	if(typeof parseInt(num)  === 'number' && !isNaN(parseInt(num))){
+	if(typeof parseInt(num)  === 'number' && !isNaN(parseInt(num)) && guessArray.indexOf(parseInt(num)) === -1){
 		
 		return parseInt(num);
-	} else {
+	}
+ 
+  else {
 		alert("Please Submit a Number");
 		$("#guess_value").val("");
 	}
@@ -43,23 +47,44 @@ function checkInput(num){
 
  //Respond to keyboard enter (keycode 13)
   $('#guess_value').on('keyup', function(event){
-
     
     if (event.keyCode == 13){
+      
      actionAfterInput();
     };
   
   });
 
+  //Respond to click on HINT button
+  $('#left_button').on('click', function(event){
+
+   //Simply display correct number
+    $('#remaining_guesses').text(myNum);
+    
+   });
+
 
 
 //All of these actions occur after click submit button or hit enter
 var actionAfterInput= function(){
+  //Reset advice and hide it again by changing color
+  advice="You are ";
+  $('h3').text(advice);
+  $('h3').css('color','lightgreen');
 
-  //only perform actions if remaining guesses greater than 0
-  if (guesses>0){
+
+
+
+  //only perform actions if remaining guesses greater than 0 and user number
+  //is not undefined
+
+  if (guesses>0 && checkInput($("#guess_value").val())!== undefined){
   //store user input in variable
     userNum = checkInput($("#guess_value").val());
+
+    console.log(guessArray);
+
+ 
 
   //reset field to be empty
     $("#guess_value").val("");
@@ -68,19 +93,67 @@ var actionAfterInput= function(){
     //Add guess to array
     guessArray.push(userNum)
 
+    //check if winner
+    if (userNum===myNum){
+      var smiles= $("<img class='image' src='Assets/smily.jpg' alt='smiley face' height='150' >")
+      $(smiles).addClass('.center_me')
+      $(smiles).insertAfter('#title');
+      alert("Congratulations!  You guessed my number.")
+
+    }
+
+    //Determine "temperature" of guess
+    var absDiff=Math.abs(userNum-myNum);
+    var diff= userNum-myNum;
+    var temperatureArray=["ice cold","cold","warm","hot","very hot"]
+    var temperatureRanges=[70,40,20,10,5]
+    if (absDiff<temperatureRanges[4]){
+      advice+= temperatureArray[4];
+    }
+    else if (absDiff<temperatureRanges[3]){
+      advice+= temperatureArray[3];
+    }
+    else if (absDiff<temperatureRanges[2]){
+      advice+= temperatureArray[2];
+    }
+    else if (absDiff<temperatureRanges[1]){
+      advice+=temperatureArray[1];
+    }
+    else {
+      advice+=temperatureArray[1];
+    }
+
+    //Tell user to guess higher or lower
+    if (diff===absDiff){
+      advice += ', guess lower.';
+    }
+    else {
+      advice+= ', guess higher';
+    }
+    //Display advice to webpage by changing color to black
+
+    $('h3').text(advice);
+    $('h3').css('color','black');
+
+
    //Decrease guesses variable 
     guesses--;
     $('#remaining').text(guesses+' ');
 
   }
 
-  else {
+  else if (guesses===0) {
     
   $("#remaining_guesses").text("Yikes. Looks like you\'re all out of guesses. Play again??");
 
-  };
+  }
+  else {
+    $('#remaining_guesses').text('You already guessed that, silly. Try again.');
+    $("#guess_value").val("");
 
-}
+  }
+
+};
 
 
 
@@ -94,15 +167,12 @@ var actionAfterInput= function(){
 		
 		// check if it's a winning number
 		// if it is a winner, notify user,
-    //Check for correct value (raise)
+  
 //Remove 
 //Respond temperature based on number-->tell user to guess higher or lower
 
-//Tell user when out of guesses
-//Respond if correct
-//New game button
-///Hin t button gives answer (document.write())
-//Store all of the guesses and create a way to check if the guess is a repeat.
+
+
 //Track the user's previous guess. Let them know if they are getting “hotter” 
 //or “colder” based on their previous guess.
 //After a user guesses a number keep a visual list of Hot and Cold answers that the user can see.
