@@ -1,10 +1,15 @@
+/* Final version 
+Katherine Mello
+Oct 16, 2015
+*/
+
 
 /* * * * * * * * * 
 GENERAL
 * * * * * * * * */
 
 .center_me{
-	margin-left:50%;
+	margin-right:300px;
 }
 
 body{
@@ -94,6 +99,7 @@ h3{
 	float:right;
 	margin-right:30%;
 }
+
 
 #remaining_guesses{
 	font-size:2em;

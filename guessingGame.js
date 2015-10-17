@@ -1,12 +1,15 @@
+//Final version 
+//Katherine Mello
+//Oct 16, 2015
 
 //Generate a random number between 1-100
 var myNum = Math.floor(Math.random()*100)+1;
-console.log(myNum);
 
-//I am declaring this variable here so that it is accessible 
+
+//I am declaring these variables here so that they are accessible 
 //in the global scope
 var userNum;
-
+var prevNum;
 
 //Declare guess tracker variable
 var guesses = 4;
@@ -17,30 +20,46 @@ var guessArray=[ ];
 //Initiate "advice" string
 var advice="You are "
 
-
 //Write a function to check for valid input
 function checkInput(num){
 
 //Have to do a double check because for some reason typeof(NaN)==='number'
-	if(typeof parseInt(num)  === 'number' && !isNaN(parseInt(num)) && guessArray.indexOf(parseInt(num)) === -1){
-		
+	if(typeof parseInt(num)  === 'number' && parseInt(num)>=1  && parseInt(num)<101 &&  !isNaN(parseInt(num)) && guessArray.indexOf(parseInt(num))=== -1 && guesses>0 ){
+		console.log("valid input");
 		return parseInt(num);
 	}
  
-  else {
-		alert("Please Submit a Number");
+  else if (typeof parseInt(num)  !== 'number' || parseInt(num)>100 || parseInt(num)<1){
+		alert("Please submit a number between 1 and 100");
 		$("#guess_value").val("");
 	}
+  else if (guesses===0) {
+    console.log("guesses 0");
+    
+  $("#remaining_guesses").text("Yikes. Looks like you\'re all out of guesses. Play again??");
+
+  }
+  else {
+    $('#remaining_guesses').text('You already guessed that, silly. Try again.');
+    $("#guess_value").val("");
+
+  }
 };
+
+//Darken buttons if moused over (so much fun!)
+$('button').on('mouseenter', function() {
+    $(this).css('background-color', '#4c004c');
+  });
+$('button').on('mouseleave', function() {
+    $(this).css('background-color', '#ff00ff');
+  });
 
 
 //Get user inputs
  
- 
  //Respond to click on submit button
   $('#guess_button').on('click', function(event){
 
-   
     actionAfterInput();
     
 	 });
@@ -49,6 +68,7 @@ function checkInput(num){
   $('#guess_value').on('keyup', function(event){
     
     if (event.keyCode == 13){
+      console.log("enter key");
       
      actionAfterInput();
     };
@@ -58,8 +78,24 @@ function checkInput(num){
   //Respond to click on HINT button
   $('#left_button').on('click', function(event){
 
-   //Simply display correct number
+   //(Simply display correct number)
     $('#remaining_guesses').text(myNum);
+    
+   });
+
+  //Respond to new game button by resetting guesses & setting new myNum random num
+  $('#right_button').on('click', function(event){
+
+
+    guesses=4;
+    myNum = Math.floor(Math.random()*100)+1;
+    $('#remaining').text(' ' +guesses+' ');
+     //Reset advice and hide it again by changing color
+    advice="You are ";
+      $('h3').text(advice);
+   $('h3').css('color','lightgreen');
+   //Reset prevNum to undefined
+   prevNum=undefined;
     
    });
 
@@ -67,28 +103,28 @@ function checkInput(num){
 
 //All of these actions occur after click submit button or hit enter
 var actionAfterInput= function(){
+   
+  
   //Reset advice and hide it again by changing color
   advice="You are ";
   $('h3').text(advice);
   $('h3').css('color','lightgreen');
 
 
+  //only perform actions if user number is not undefined (i.e. it passed the check valid input 
+    //function)
 
+  if (checkInput($("#guess_value").val())!== undefined){
+    //Reset guesses remaining text
+    $('#remaining_guesses').html('<p id="remaining_guesses">You have <span id="remaining">' + guesses +' </span>guesses remaining.</p>');
 
-  //only perform actions if remaining guesses greater than 0 and user number
-  //is not undefined
-
-  if (guesses>0 && checkInput($("#guess_value").val())!== undefined){
   //store user input in variable
     userNum = checkInput($("#guess_value").val());
 
-    console.log(guessArray);
-
- 
 
   //reset field to be empty
     $("#guess_value").val("");
-    console.log(userNum);
+    
 
     //Add guess to array
     guessArray.push(userNum)
@@ -96,39 +132,55 @@ var actionAfterInput= function(){
     //check if winner
     if (userNum===myNum){
       var smiles= $("<img class='image' src='Assets/smily.jpg' alt='smiley face' height='150' >")
-      $(smiles).addClass('.center_me')
+      $(smiles).css('margin-left','43%');
+
       $(smiles).insertAfter('#title');
-      alert("Congratulations!  You guessed my number.")
+      alert("Congratulations!  You guessed my number.");
 
     }
 
     //Determine "temperature" of guess
     var absDiff=Math.abs(userNum-myNum);
     var diff= userNum-myNum;
+
+    //if it is first guess, give absolute temps
+    if (prevNum===undefined){
     var temperatureArray=["ice cold","cold","warm","hot","very hot"]
     var temperatureRanges=[70,40,20,10,5]
-    if (absDiff<temperatureRanges[4]){
+      if (absDiff<temperatureRanges[4]){
       advice+= temperatureArray[4];
-    }
-    else if (absDiff<temperatureRanges[3]){
+      }
+      else if (absDiff<temperatureRanges[3]){
       advice+= temperatureArray[3];
+      }
+      else if (absDiff<temperatureRanges[2]){
+        advice+= temperatureArray[2];
+      }
+      else if (absDiff<temperatureRanges[1]){
+       advice+=temperatureArray[1];
+      }
+      else {
+        advice+=temperatureArray[0];
+      }
     }
-    else if (absDiff<temperatureRanges[2]){
-      advice+= temperatureArray[2];
+
+//if it is not first guess, give temps relative to previous guess
+  else{
+    if (Math.abs(myNum-userNum)>=Math.abs(myNum-prevNum)){
+      advice+="colder";
     }
-    else if (absDiff<temperatureRanges[1]){
-      advice+=temperatureArray[1];
+    else{
+      advice+="warmer";
     }
-    else {
-      advice+=temperatureArray[1];
-    }
+  }
+    
 
     //Tell user to guess higher or lower
     if (diff===absDiff){
       advice += ', guess lower.';
     }
     else {
-      advice+= ', guess higher';
+      advice+= ', guess higher.';
     }
     //Display advice to webpage by changing color to black
 
@@ -140,124 +192,11 @@ var actionAfterInput= function(){
     guesses--;
     $('#remaining').text(guesses+' ');
 
+  
+    //Set userNum to prevNum
+    prevNum=userNum
   }
-
-  else if (guesses===0) {
-    
-  $("#remaining_guesses").text("Yikes. Looks like you\'re all out of guesses. Play again??");
-
-  }
-  else {
-    $('#remaining_guesses').text('You already guessed that, silly. Try again.');
-    $("#guess_value").val("");
-
-  }
+ 
 
 };
-
-
-
-
-
-
- /*
-
-
-
-		
-		// check if it's a winning number
-		// if it is a winner, notify user,
-  
-//Remove 
-//Respond temperature based on number-->tell user to guess higher or lower
-
-
-
-//Track the user's previous guess. Let them know if they are getting “hotter” 
-//or “colder” based on their previous guess.
-//After a user guesses a number keep a visual list of Hot and Cold answers that the user can see.
-//Change the background color, add an image, or do something creative when the user guesses 
-//the correct answer.
-
-
-		
-
-
- // 	$("#guess_value").val("");
-
- // 	console.log(userNum);
-	//}
-  // prevent default browser behaviour
-  //event.preventDefault();
-
-  // userNum = $("#guess_value").val();
-
-  // $("#guess_value").val("");
-
-  // console.log(userNum);
-
-
-
-
-//addEventListener("keydown", function(event) {
-  //  if (event.keyCode == 86)
-   //   document.body.style.background = "violet";
- // });
-
-
-
-
-
-
-
-
-
-
-  //do stuff with your form here
-  
-
-
-
-
-
-
-
-
-
-
-//Will be useful
-/*
-THIS IS FOR USER input
-
-$(document).ready(function() {
-  $('#nights').on('keyup', function() {
-     $('#nights-count').text($(this).val());
-     (THIS.VAL IS VALUE Of INPT)
-  });
-});
-
-$(document).ready(function() {
-  $('').on('click','button',function(){});
-  
-});
-
-PERHAPS FOR DARKENNG BUTTON
-
-$('.photos').on('mouseenter', 'li', function() {
-    $(this).find('span').slideToggle();
-  }); 
-
-  $('.photos').on('mouseleave', 'li', function() {
-    $(this).find('span').slideToggle();
-  });
-
-    $('.tour').on('mouseenter', function() {
-    $(this).css('background-color', '#252b30');
-
-    $('.tour').on('mouseenter', function() {
-    $(this).addClass('highlight');
-    $(this).find('.per-night').animate({'top': '-14px', 'opacity': '1'}, 'fast');
-
-
-*/
 
